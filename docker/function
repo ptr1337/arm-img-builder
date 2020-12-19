@@ -12,7 +12,7 @@ version: '3.6'
 services:
   arm-img-builder:
 #    build: .  #uncomment for building
-    image: pttrr/arm-img-builder:cross
+    image: pttrr/arm-img-builder:cross #uncomment for cross compiling
 #    image: pttrr/arm-img-builder:native #uncomment for native compiling
     privileged: true
     container_name: arm-img-builder
@@ -128,7 +128,7 @@ version: '3.6'
 services:
   arm-img-builder:
 #    build: .  #uncomment for building
-    image: pttrr/arm-img-builder:cross
+    image: pttrr/arm-img-builder:cross #uncomment for cross compiling
 #    image: pttrr/arm-img-builder:native #uncomment for native compiling
     privileged: true
     container_name: arm-img-builder
@@ -362,8 +362,8 @@ version: '3.6'
 services:
   arm-img-builder:
 #    build: .  #uncomment for building
-    image: pttrr/arm-img-builder:cross
-#    image: pttrr/arm-img-builder:native #uncomment for native compiling
+#    image: pttrr/arm-img-builder:cross #uncomment for cross compiling
+    image: pttrr/arm-img-builder:native #uncomment for native compiling
     privileged: true
     container_name: arm-img-builder
     hostname: arm-img-builder
@@ -478,7 +478,7 @@ version: '3.6'
 services:
   arm-img-builder:
     build: .  #uncomment for building
-    image: pttrr/arm-img-builder:cross #uncomment for native compiling
+    image: pttrr/arm-img-builder:cross #uncomment for cross compiling
 #    image: pttrr/arm-img-builder:native #uncomment for native compiling
     privileged: true
     container_name: arm-img-builder
@@ -503,7 +503,7 @@ version: '3.6'
 services:
   arm-img-builder:
     build: .  #uncomment for building
-#    image: pttrr/arm-img-builder:cross #uncomment for native compiling
+#    image: pttrr/arm-img-builder:cross #uncomment for cross compiling
     image: pttrr/arm-img-builder:native #uncomment for native compiling
     privileged: true
     container_name: arm-img-builder
