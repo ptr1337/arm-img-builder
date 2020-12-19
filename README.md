@@ -1,4 +1,4 @@
-***WARNING: You at your own risk! beta***
+***WARNING: Use at your own risk! beta***
 
 # Addon for the Docker Arm Image Builder
 
