@@ -1,0 +1,15 @@
+#!/bin/bash
+source docker/function
+
+echo -e "${GRN}Running git pull${FIN} ..."
+cd /build
+cd rpi-img-builder && make bmakefile > /dev/null 2>&1
+cd ../debian-image-builder && make bmakefile > /dev/null 2>&1
+cd ..
+sleep 1s
+git submodule update --remote
+sleep 1s
+cd rpi-img-builder && make dmakefile > /dev/null 2>&1
+cd ../debian-image-builder && make dmakefile > /dev/null 2>&1
+cd ..
+echo -e "${GRN}Done${FIN}."
