@@ -19,7 +19,7 @@ Outside container:
 Inside container: 
 
   make setup            Create docker Makefiles
-  make pull             Update builder
+  make pull             Update builders
 
 For details consult the README.md
 
