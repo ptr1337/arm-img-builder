@@ -11,14 +11,17 @@ PL=./docker/pull
 PULL=./docker/pull
 SUP=./docker/setup
 SETUP=./docker/setup
+CHSE=./docker/choose
+CHOOSE=./docker/choose
 CLEAN=$(shell rm -f Dockerfile* *.yml)
 
 help:
 	@echo
-	@echo "DOCKER ARM IMAGE BUILDER"
+	@echo "\e[1;32mDOCKER ARM IMAGE BUILDER\e[0m"
 	@echo
 	@echo "Outside container: "
 	@echo
+	@echo "  make config           Select which distribution you would like to use"
 	@echo "  make cross            Create docker container for cross compiling"
 	@echo "  make native           Create docker container for native compiling"
 	@echo "  make enter            If exited re-enter container"
@@ -32,6 +35,21 @@ help:
 	@echo
 	@echo "For details consult the README.md"
 	@echo
+
+config:
+	# Debian or Ubuntu ..?
+	@chmod +x ${CHSE}
+	@${CHOOSE} -h
+
+debian:
+	#
+	@chmod +x ${CHSE}
+	@${CHOOSE} -1
+	
+ubuntu:
+	#
+	@chmod +x ${CHSE}
+	@${CHOOSE} -2
 
 cross:
 	# Cross compiling ...

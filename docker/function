@@ -4,7 +4,7 @@ GRN="\e[0;32m"
 FIN="\e[0m"
 
 # CROSS
-docker_cross(){
+ubuntu_cross(){
 rm -f Dockerfile
 rm -f docker-compose.yml
 tee docker-compose.yml <<EOF
@@ -30,7 +30,7 @@ services:
 EOF
 
 tee Dockerfile <<EOF
-FROM ubuntu:20.04
+FROM ${UBUNTU}
 
 ENV container docker
 ENV LC_ALL C
@@ -69,7 +69,7 @@ RUN set -x && \
         curl \
         dialog \
         patch \
-        unzip \
+        zip \
         rsync \
         cpio \
         flex \
@@ -120,8 +120,125 @@ CMD ["/lib/systemd/systemd"]
 EOF
 }
 
+debian_cross(){
+rm -f Dockerfile
+rm -f docker-compose.yml
+tee docker-compose.yml <<EOF
+version: '3.6'
+services:
+  arm-img-builder:
+#    build: .  #uncomment for building
+    image: pttrr/arm-img-builder:cross
+#    image: pttrr/arm-img-builder:native #uncomment for native compiling
+    privileged: true
+    container_name: arm-img-builder
+    hostname: arm-img-builder
+    network_mode: bridge
+    tmpfs:
+    - /tmp
+    - /run
+    - /run/lock
+    volumes:
+    - /dev:/dev
+    - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    - ./:/build
+    
+EOF
+
+tee Dockerfile <<EOF
+FROM ${DEBIAN}
+
+ENV container docker
+ENV LC_ALL C
+ENV DEBIAN_FRONTEND noninteractive
+
+ARG APT_OPTS="--no-install-recommends -o APT::Install-Suggests=0 -o Acquire::Languages=none"
+
+RUN echo "deb http://deb.debian.org/debian buster-backports main" >/etc/apt/sources.list.d/backports.list \
+    && echo 'APT::Default-Release "stable";' > /etc/apt/apt.conf \
+    && apt-get update \
+        && apt-get install  -y $APT_OPTS \
+        -t buster-backports \
+        ca-certificates \
+        apt-transport-https \
+        binfmt-support \
+        qemu \
+        qemu-user-static \
+        qemu-system-x86 \
+        dosfstools \
+        rsync \
+        wget \
+        lsof \
+        build-essential \
+        bison \
+        xz-utils \
+        dirmngr \
+        parted \
+        systemd \
+        systemd-sysv \
+        debootstrap \
+        kmod \
+        dbus \
+        udev \
+        procps \
+        nano \
+        unzip \
+        git \
+        bc \
+        curl \
+        dialog \
+        patch \
+        zip \
+        rsync \
+        cpio \
+        flex \
+        libssl-dev \
+        libncurses5-dev \
+        fakeroot \
+        swig \
+        aria2 \
+        pv \
+        toilet \
+        figlet \
+        crossbuild-essential-arm64 \
+        crossbuild-essential-armel \
+        gcc-arm-none-eabi \
+        gcc-aarch64-linux-gnu \
+        distro-info-data \
+        lsb-release \
+        python \
+        python-dev \
+        python3-distutils \
+        python3-dev \
+        lz4 \
+        lzop \
+        libfdt-dev \
+        device-tree-compiler \
+        && apt-get update \
+        && apt-get upgrade -y \
+        && apt-get clean \
+        && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt/*.bin \
+        /var/lib/dpkg/*-old /var/cache/debconf/*-old
+
+RUN     rm -f /lib/systemd/system/multi-user.target.wants/* \
+            /etc/systemd/system/*.wants/* \
+            /lib/systemd/system/local-fs.target.wants/* \
+            /lib/systemd/system/sockets.target.wants/*udev* \
+            /lib/systemd/system/sockets.target.wants/*initctl* \
+            /lib/systemd/system/sysinit.target.wants/systemd-tmpfiles-setup* \
+            /lib/systemd/system/systemd-update-utmp*
+
+WORKDIR /build
+
+VOLUME [ "/sys/fs/cgroup" ]
+
+CMD ["/lib/systemd/systemd"]
+
+EOF
+}
+
 # NATIVE
-docker_native(){
+ubuntu_native(){
 rm -f Dockerfile
 rm -f docker-compose.yml
 tee docker-compose.yml <<EOF
@@ -147,7 +264,7 @@ services:
 EOF
 
 tee Dockerfile <<EOF
-FROM ubuntu:20.04
+FROM ${UBUNTU}
 
 ENV container docker
 ENV LC_ALL C
@@ -227,6 +344,123 @@ RUN set -x && \
         /lib/systemd/system/anaconda.target.wants/* \
         /lib/systemd/system/plymouth* \
         /lib/systemd/system/systemd-update-utmp*
+
+WORKDIR /build
+
+VOLUME [ "/sys/fs/cgroup" ]
+
+CMD ["/lib/systemd/systemd"]
+
+EOF
+}
+
+debian_native(){
+rm -f Dockerfile
+rm -f docker-compose.yml
+tee docker-compose.yml <<EOF
+version: '3.6'
+services:
+  arm-img-builder:
+#    build: .  #uncomment for building
+    image: pttrr/arm-img-builder:cross
+#    image: pttrr/arm-img-builder:native #uncomment for native compiling
+    privileged: true
+    container_name: arm-img-builder
+    hostname: arm-img-builder
+    network_mode: bridge
+    tmpfs:
+    - /tmp
+    - /run
+    - /run/lock
+    volumes:
+    - /dev:/dev
+    - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    - ./:/build
+    
+EOF
+
+tee Dockerfile <<EOF
+FROM ${DEBIAN}
+
+ENV container docker
+ENV LC_ALL C
+ENV DEBIAN_FRONTEND noninteractive
+
+ARG APT_OPTS="--no-install-recommends -o APT::Install-Suggests=0 -o Acquire::Languages=none"
+
+RUN echo "deb http://deb.debian.org/debian buster-backports main" >/etc/apt/sources.list.d/backports.list \
+    && echo 'APT::Default-Release "stable";' > /etc/apt/apt.conf \
+    && apt-get update \
+        && apt-get install  -y $APT_OPTS \
+        -t buster-backports \
+        ca-certificates \
+        apt-transport-https \
+        binfmt-support \
+        qemu \
+        dosfstools \
+        rsync \
+        wget \
+        lsof \
+        build-essential \
+        bison \
+        xz-utils \
+        parted \
+        systemd \
+        systemd-sysv \
+        debootstrap \
+        kmod \
+        dbus \
+        udev \
+        procps \
+        nano \
+        unzip \
+        git \
+        bc \
+        curl \
+        dialog \
+        patch \
+        unzip \
+        rsync \
+        cpio \
+        flex \
+        libssl-dev \
+        libncurses5-dev \
+        fakeroot \
+        swig \
+        aria2 \
+        pv \
+        toilet \
+        figlet \
+        distro-info-data \
+        lsb-release \
+        python \
+        python-dev \
+        python3-distutils \
+        python3-dev \
+        lz4 \
+        lzop \
+        libfdt-dev \
+        device-tree-compiler \
+        binutils-arm-none-eabi \
+        gcc-arm-none-eabi \
+        libnewlib-arm-none-eabi \
+        libnewlib-dev \
+        libstdc++-arm-none-eabi-newlib \ 
+        qemu-user-static \
+        zip \
+        && apt-get update \
+        && apt-get upgrade -y \
+        && apt-get clean \
+        && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt/*.bin \
+        /var/lib/dpkg/*-old /var/cache/debconf/*-old
+
+RUN     rm -f /lib/systemd/system/multi-user.target.wants/* \
+            /etc/systemd/system/*.wants/* \
+            /lib/systemd/system/local-fs.target.wants/* \
+            /lib/systemd/system/sockets.target.wants/*udev* \
+            /lib/systemd/system/sockets.target.wants/*initctl* \
+            /lib/systemd/system/sysinit.target.wants/systemd-tmpfiles-setup* \
+            /lib/systemd/system/systemd-update-utmp*
 
 WORKDIR /build
 

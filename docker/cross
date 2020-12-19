@@ -1,9 +1,28 @@
 #!/bin/bash
+source userdata
 source docker/function
 
+start_ubuntu_cross(){
 echo -e "${GRN}Starting pull${FIN} ..."
-docker_cross > /dev/null 2>&1
+ubuntu_cross > /dev/null 2>&1
 docker-compose pull && docker-compose up -d
 docker_cbuild > /dev/null 2>&1
 sudo docker-compose --compatibility up -d --build
 docker exec -it arm-img-builder bash
+}
+
+start_debian_cross(){
+echo -e "${GRN}Starting pull${FIN} ..."
+debian_cross > /dev/null 2>&1
+docker-compose pull && docker-compose up -d
+docker_cbuild > /dev/null 2>&1
+sudo docker-compose --compatibility up -d --build
+docker exec -it arm-img-builder bash
+}
+
+if `grep -Fx "ubuntu=1" "userdata" >/dev/null;`
+	then start_ubuntu_cross;
+fi
+if `grep -Fx "debian=1" "userdata" >/dev/null;`
+	then start_debian_cross;
+fi

@@ -1,0 +1,54 @@
+#!/bin/bash
+
+debian(){
+echo debian=1 > userdata
+echo DEBIAN='"'debian:buster-slim'"' >> userdata
+}
+
+ubuntu(){
+echo ubuntu=1 > userdata
+echo UBUNTU='"'ubuntu:20.04'"' >> userdata
+}
+
+# Commands
+if [ $# -eq 0 ]
+then
+        echo "Missing options!"
+        echo "(run $0 -h for help)"
+        echo ""
+        exit 0
+fi
+
+ECHO="false"
+
+while getopts "h12" OPTION; do
+        case $OPTION in
+
+                1)
+                        ECHO="buster"
+                        ;;
+                2)
+                        ECHO="20.04"
+                        ;;
+                h)
+                        echo ""
+                        echo -e "\e[1;32mChoose a Distribution for the container\e[0m."
+                        echo ""
+                        echo "   make debian     Debian Buster"
+                        echo "   make ubuntu     Ubuntu 20.04"
+                        echo ""
+                        exit 0
+                        ;;
+
+        esac
+done
+
+if [ $ECHO = "buster" ]
+then
+        debian && clear && echo -e "\e[0;31mDebian Selected\e[0m." && make help;
+fi
+if [ $ECHO = "20.04" ]
+then
+        ubuntu && clear && echo -e "\e[0;31mUbuntu Selected\e[0m" && make help;
+fi
+
