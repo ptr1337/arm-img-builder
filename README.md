@@ -1,4 +1,6 @@
-## Addon for the Docker Arm Image Builder
+***WARNING: You at your own risk! beta***
+
+# Addon for the Docker Arm Image Builder
 
 https://github.com/ptTrR/arm-image-builder-docker
 
@@ -7,6 +9,7 @@ DOCKER ARM IMAGE BUILDER
 
 Outside container: 
 
+  make config           Select which distribution you would like to use
   make cross            Create docker container for cross compiling
   make native           Create docker container for native compiling
   make enter            If exited re-enter container
@@ -19,10 +22,13 @@ Inside container:
   make pull             Update builder
 
 For details consult the README.md
+
 ```
 
+```sh
 The main purpose of the Makefile is to remove the need for manual setup
-and as of this moment is currently only supporting ubuntu:20.04.
+Supported: debian:buster-slim and ubuntu:20.04
+```
 
 The initial docker installation and setup still applies so I suggest you
 read the [README](https://github.com/ptTrR/arm-image-builder-docker/blob/main/README.md) before trying to use this.
