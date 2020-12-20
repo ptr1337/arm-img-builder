@@ -36,7 +36,7 @@ Supported: debian:buster-slim and ubuntu:20.04
 The initial docker installation and setup still applies so I suggest you
 read the [README](https://github.com/ptTrR/arm-image-builder-docker/blob/main/README.md) before trying to use this.
 
-### Debian / Ubuntu Installation
+### Docker: Debian / Ubuntu Installation
 ```sh
 sudo apt install docker docker-compose
 sudo usermod -aG docker $USER
@@ -52,7 +52,7 @@ sudo nano /etc/docker/daemon.json
 sudo systemctl restart docker
 ```
 
-### Installation:
+### Builder / Addon Installation
 `git clone --recurse-submodules https://github.com/ptTrR/arm-image-builder-docker.git && cd arm-image-builder-docker && git submodule update --remote`
 
 `git clone https://github.com/pyavitz/docker-addon.git && mv -f docker-addon/{docker,Makefile} . && rm -fdr docker-addon && make cleanup`
