@@ -18,15 +18,12 @@ Outside container:
   make enter            If exited re-enter container
   make purge            Purge said container
   make cleanup          Remove docker files
+  make update           Updates the scripts, functions and makefile
 
 Inside container: 
 
   make setup            Create docker Makefiles
   make pull             Update builder
-
-Updating addon: 
-
-  make update           Updates the scripts, functions and makefile
 
 For details consult the README.md
 ```

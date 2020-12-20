@@ -32,15 +32,12 @@ help:
 	@echo "  make enter            If exited re-enter container"
 	@echo "  make purge            Purge said container"
 	@echo "  make cleanup          Remove docker files"
+	@echo "  make update           Updates scripts, functions and makefile"
 	@echo
 	@echo "Inside container: "
 	@echo
 	@echo "  make setup            Create docker Makefiles"
 	@echo "  make pull             Update builder"
-	@echo
-	@echo "Updating addon: "
-	@echo
-	@echo "  make update           Updates the scripts, functions and makefile"
 	@echo
 	@echo "For details consult the README.md"
 	@echo
