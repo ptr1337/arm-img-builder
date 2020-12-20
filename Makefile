@@ -13,20 +13,26 @@ SUP=./docker/setup
 SETUP=./docker/setup
 CHSE=./docker/choose
 CHOOSE=./docker/choose
+UP=./docker/update
+UPDATE=./docker/update
 CLEAN=$(shell rm -f Dockerfile* *.yml)
 
 help:
 	@echo
 	@echo "\e[1;32mDOCKER ARM IMAGE BUILDER\e[0m"
 	@echo
+	@echo "Create userdata file: "
+	@echo 
+	@echo "  make config           Select which distribution you would like to use"
+	@echo 
 	@echo "Outside container: "
 	@echo
-	@echo "  make config           Select which distribution you would like to use"
 	@echo "  make cross            Create docker container for cross compiling"
 	@echo "  make native           Create docker container for native compiling"
 	@echo "  make enter            If exited re-enter container"
 	@echo "  make purge            Purge said container"
 	@echo "  make cleanup          Remove docker files"
+	@echo "  make update           Update addon"
 	@echo
 	@echo "Inside container: "
 	@echo
@@ -45,7 +51,7 @@ debian:
 	#
 	@chmod +x ${CHSE}
 	@${CHOOSE} -1
-	
+
 ubuntu:
 	#
 	@chmod +x ${CHSE}
@@ -84,3 +90,8 @@ setup:
 cleanup:
 	# Removing docker files ...
 	@${CLEAN}
+
+update:
+	# Updating addon ...
+	@chmod +x ${UP}
+	@${UPDATE}
