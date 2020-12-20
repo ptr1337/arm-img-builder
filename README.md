@@ -36,11 +36,8 @@ Supported: debian:buster-slim and ubuntu:20.04
 The initial docker installation and setup still applies so I suggest you
 read the [README](https://github.com/ptTrR/arm-image-builder-docker/blob/main/README.md) before trying to use this.
 
-### Docker: Debian / Ubuntu Installation
+### External 
 ```sh
-sudo apt install docker docker-compose
-sudo usermod -aG docker $USER
-
 If compiling native or lacking internal space, I suggest setting up an
 external hard drive.
 
