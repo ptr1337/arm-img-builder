@@ -2,9 +2,12 @@
 source docker/function
 
 echo -e "${GRN}Running git pull${FIN} ..."
-cd rpi-img-builder && make bmakefile > /dev/null 2>&1
+cd /build/rpi-img-builder && make bmakefile > /dev/null 2>&1
+git pull
 cd ../debian-image-builder && make bmakefile > /dev/null 2>&1
-cd rpi-img-builder && git pull > /dev/null 2>&1
-cd ../debian-image-builder && git pull > /dev/null 2>&1
+git pull
+cd /build/rpi-img-builder && make dmakefile > /dev/null 2>&1
+cd ../debian-image-builder && make dmakefile > /dev/null 2>&1
 cd ..
 echo -e "${GRN}Done${FIN}."
+
