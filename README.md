@@ -46,7 +46,7 @@ For details consult the README.md
 ```sh
 The main purpose of the Makefile is to remove the need for manual setup
 ```
-### External 
+### External setup
 ```sh
 If compiling native or lacking internal space, I suggest setting up an
 external hard drive.
@@ -59,7 +59,7 @@ sudo nano /etc/docker/daemon.json
 sudo systemctl restart docker
 ```
 
-### Moving
+### Moving files
 ```sh
 Example:
 mv rpi-3-debian-buster-5.10.1-v8-2020-12-21.img.xz /images/
