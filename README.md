@@ -17,8 +17,8 @@ All docker files are created on the fly depending on your choices 'make cross' o
 At the end of execution you should then find yourself inside the container, at which point you
 will need to run 'make setup'.
 
-From that point on, each builder "rpi-img-builder / debian-image-builder" each function as they
-would outside the container, minus the need for installing dependencies.
+From that point on, each builder "rpi-img-builder / debian-image-builder" function as they would
+outside the container, minus the need for installing dependencies.
 
 For each builder simply following the directions in the README.md or run ‘make help’.
 ```
