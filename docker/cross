@@ -1,4 +1,5 @@
 #!/bin/bash
+source userdata
 source docker/function
 
 echo -e "${GRN}Starting pull${FIN} ..."

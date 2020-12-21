@@ -11,8 +11,6 @@ PL=./docker/pull
 PULL=./docker/pull
 SUP=./docker/setup
 SETUP=./docker/setup
-UP=./docker/update
-UPDATE=./docker/update
 CLEAN=$(shell rm -f Dockerfile* *.yml)
 
 help:
@@ -26,7 +24,6 @@ help:
 	@echo "  make enter            If exited re-enter container"
 	@echo "  make purge            Purge said container"
 	@echo "  make cleanup          Remove docker files"
-	@echo "  make update           Updates scripts, functions and makefile"
 	@echo
 	@echo "Inside container: "
 	@echo
@@ -69,8 +66,3 @@ setup:
 cleanup:
 	# Removing docker files ...
 	@${CLEAN}
-
-update:
-	# Updating addon ...
-	@chmod +x ${UP}
-	@${UPDATE}

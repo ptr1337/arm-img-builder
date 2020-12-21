@@ -84,6 +84,7 @@ RUN apt-get update && \
         lzop \
         libfdt-dev \
         device-tree-compiler \
+        wget \
         && apt-get update \
         && apt-get upgrade -y \
         && apt-get clean \
@@ -93,7 +94,10 @@ WORKDIR /build
 
 RUN git clone https://github.com/pyavitz/rpi-img-builder \
     && git clone https://github.com/pyavitz/debian-image-builder \
-    && git clone https://github.com/pyavitz/docker-addon.git && mv -f docker-addon/{docker,Makefile} . && rm -fdr docker-addon
+    wget -cq --show-progress https://raw.githubusercontent.com/pyavitz/docker-addon/main/Makefile \
+    mkdir -p docker \
+    wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/docker-addon/main/docker/setup \
+    wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/docker-addon/main/docker/setup
 
 CMD ["/bin/bash"]
 
@@ -181,6 +185,7 @@ RUN apt-get update && \
         libstdc++-arm-none-eabi-newlib \ 
         qemu-user-static \
         zip \
+        wget \
         && apt-get update \
         && apt-get upgrade -y \
         && apt-get clean \
@@ -190,8 +195,11 @@ WORKDIR /build
 
 RUN git clone https://github.com/pyavitz/rpi-img-builder \
     && git clone https://github.com/pyavitz/debian-image-builder \
-    && git clone https://github.com/pyavitz/docker-addon.git && mv -f docker-addon/{docker,Makefile} . && rm -fdr docker-addon
-
+    wget -cq --show-progress https://raw.githubusercontent.com/pyavitz/docker-addon/main/Makefile \
+    mkdir -p docker \
+    wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/docker-addon/main/docker/setup \
+    wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/docker-addon/main/docker/setup
+    
 CMD ["/bin/bash"]
 
 EOF
