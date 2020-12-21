@@ -7,10 +7,6 @@ https://github.com/ptTrR/arm-image-builder-docker
 ```sh
 DOCKER ARM IMAGE BUILDER
 
-Create userdata file: 
-
-  make config           Select which distribution you would like to use
-
 Outside container: 
 
   make cross            Create docker container for cross compiling
@@ -18,7 +14,6 @@ Outside container:
   make enter            If exited re-enter container
   make purge            Purge said container
   make cleanup          Remove docker files
-  make update           Updates the scripts, functions and makefile
 
 Inside container: 
 
@@ -30,7 +25,6 @@ For details consult the README.md
 
 ```sh
 The main purpose of the Makefile is to remove the need for manual setup
-Supported: debian:buster-slim and ubuntu:20.04
 ```
 
 The initial docker installation and setup still applies so I suggest you
