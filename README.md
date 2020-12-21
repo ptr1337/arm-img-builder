@@ -25,7 +25,6 @@ For details consult the README.md
 
 ```sh
 The main purpose of the Makefile is to remove the need for manual setup
-Supported: debian:buster-slim and ubuntu:20.04
 ```
 
 The initial docker installation and setup still applies so I suggest you
