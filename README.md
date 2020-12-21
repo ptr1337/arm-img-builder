@@ -6,8 +6,24 @@
 * https://github.com/pyavitz/rpi-img-builder
 * https://github.com/pyavitz/debian-image-builder
 
-___
+The initial docker installation and setup still applies so I suggest you
+read the [README](https://github.com/ptTrR/arm-image-builder-docker/blob/main/README.md) before trying to use this.
 
+---
+
+### Basics
+```ssh
+All docker files are created on the fly depending on your choices 'make cross' or 'make native'. At the
+end of execution you should then find yourself inside the container, at which you point you will need
+to run 'make setup'.
+
+From that point on, each builder "rpi-img-builder / debian-image-builder" each function as they would
+outside the container, minus the need for installing dependencies.
+
+For each builder simply following the directions in the README.md or run ‘make help’.
+```
+
+### Makefile
 ```sh
 DOCKER ARM IMAGE BUILDER
 
@@ -30,10 +46,6 @@ For details consult the README.md
 ```sh
 The main purpose of the Makefile is to remove the need for manual setup
 ```
-
-The initial docker installation and setup still applies so I suggest you
-read the [README](https://github.com/ptTrR/arm-image-builder-docker/blob/main/README.md) before trying to use this.
-
 ### External 
 ```sh
 If compiling native or lacking internal space, I suggest setting up an
