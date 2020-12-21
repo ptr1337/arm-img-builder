@@ -1,8 +1,12 @@
-***WARNING: Use at your own risk! beta***
+# Addon for the Arm Image Builder Docker
 
-# Addon for the Docker Arm Image Builder
+***All docker work done by:*** https://github.com/ptTrR/arm-image-builder-docker
 
-https://github.com/ptTrR/arm-image-builder-docker
+### Builders:
+* https://github.com/pyavitz/rpi-img-builder
+* https://github.com/pyavitz/debian-image-builder
+
+___
 
 ```sh
 DOCKER ARM IMAGE BUILDER
