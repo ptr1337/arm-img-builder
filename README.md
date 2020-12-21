@@ -48,8 +48,3 @@ sudo nano /etc/docker/daemon.json
 }
 sudo systemctl restart docker
 ```
-
-### Builder / Addon Installation
-`git clone --recurse-submodules https://github.com/ptTrR/arm-image-builder-docker.git && cd arm-image-builder-docker && git submodule update --remote`
-
-`git clone https://github.com/pyavitz/docker-addon.git && mv -f docker-addon/{docker,Makefile} . && rm -fdr docker-addon && make cleanup`

@@ -1,3 +1,4 @@
 #!/bin/bash
+
 rm -fdr {docker,Makefile}
 git clone https://github.com/pyavitz/docker-addon.git && mv -f docker-addon/{docker,Makefile} . && rm -fdr docker-addon

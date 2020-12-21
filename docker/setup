@@ -2,9 +2,6 @@
 source docker/function
 
 echo -e "${GRN}Running setup${FIN} ..."
-git submodule update --remote
-sleep 1s
-cd /build
 cd rpi-img-builder && make dmakefile > /dev/null 2>&1
 cd ../debian-image-builder && make dmakefile > /dev/null 2>&1
 cd ..
