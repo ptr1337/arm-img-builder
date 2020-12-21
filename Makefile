@@ -28,7 +28,7 @@ help:
 	@echo "Inside container: "
 	@echo
 	@echo "  make setup            Create docker Makefiles"
-	@echo "  make pull             Update builder"
+	@echo "  make pull             Update builders"
 	@echo
 	@echo "For details consult the README.md"
 	@echo
