@@ -84,7 +84,6 @@ RUN apt-get update && \
         lzop \
         libfdt-dev \
         device-tree-compiler \
-        wget \
         && apt-get update \
         && apt-get upgrade -y \
         && apt-get clean \
@@ -186,7 +185,6 @@ RUN apt-get update && \
         libstdc++-arm-none-eabi-newlib \ 
         qemu-user-static \
         zip \
-        wget \
         && apt-get update \
         && apt-get upgrade -y \
         && apt-get clean \
