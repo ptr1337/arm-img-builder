@@ -42,3 +42,11 @@ sudo nano /etc/docker/daemon.json
 }
 sudo systemctl restart docker
 ```
+
+### Moving
+```sh
+Example:
+mv rpi-3-debian-buster-5.10.1-v8-2020-12-21.img.xz /images/
+
+This applies to anything created in container.
+```
