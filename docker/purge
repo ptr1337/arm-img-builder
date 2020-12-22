@@ -1,7 +1,7 @@
 #!/bin/bash
 source docker/function
 
-dockerid=$(arm-image-builder)
+dockerid=$(arm-img-builder)
 echo -e "${RED}Removing ID${FIN}: $dockerid"
 docker stop $dockerid > /dev/null 2>&1
 docker rm $dockerid > /dev/null 2>&1
