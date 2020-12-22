@@ -1,7 +1,6 @@
 #!/bin/bash
 source docker/function
 
-
 IMAGENAME="pttrr/arm-img-builder"
 DOCKERID="arm-img-builder"
 echo -e "${RED}Removing ID${FIN}: ${DOCKERID}"
