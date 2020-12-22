@@ -52,7 +52,7 @@ purge:
 	@${PURGE}
 	
 purge-all:
-	# Purging ...
+	# Purging all ...
 	@chmod +x ${PRGA}
 	@${PURGEALL}
 

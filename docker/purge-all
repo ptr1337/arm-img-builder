@@ -10,7 +10,7 @@ echo -e ""
 read -p "Continue (y/n)?" choice
 case "$choice" in 
   y|Y ) echo && echo -e "${GRN}Confirmed${FIN}!";;
-  n|N ) echo && echo -e "You have chosen... ${YLW}wisely." && exit 0;;
+  n|N ) echo && echo -e "You have chosen... wisely." && exit 0;;
   * ) echo && echo -e "${RED}Invalid choice${FIN}." && exit 0;;
 esac
 }
