@@ -3,7 +3,7 @@ source docker/function
 
 confirm(){
 echo -e ""
-echo -e "${RED}Warning${FIN}: The following with be executed!"
+echo -e "${RED}Warning${FIN}: The following will be executed!"
 echo -e "docker system prune -a"
 echo -e "docker system prune --volumes$."
 echo -e ""
