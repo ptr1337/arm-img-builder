@@ -13,6 +13,8 @@ PL=./docker/pull
 PULL=./docker/pull
 SUP=./docker/setup
 SETUP=./docker/setup
+UP=./docker/update
+UPDATE=./docker/update
 CLEAN=$(shell rm -f Dockerfile* *.yml)
 
 help:
@@ -32,6 +34,7 @@ help:
 	@echo
 	@echo "  make setup            Create docker Makefiles"
 	@echo "  make pull             Update builders"
+	@echo "  make update           Update makefile and scripts"
 	@echo
 	@echo "For details consult the README.md"
 	@echo
@@ -70,6 +73,11 @@ setup:
 	# Creating docker Makefiles ...
 	@chmod +x ${SUP}
 	@${SETUP}
+
+update:
+	# Updating Makefile and scripts ...
+	@chmod +x ${UP}
+	@${UPDATE}
 
 cleanup:
 	# Removing docker files ...
