@@ -6,3 +6,4 @@ echo -e "${RED}Removing ID${FIN}: ${DOCKERID}"
 docker stop ${DOCKERID} > /dev/null 2>&1
 docker rm ${DOCKERID} > /dev/null 2>&1
 #echo 'y' | docker system prune -a && echo 'y' | docker system prune --volumes
+echo -e "${RED}Done${FIN}.
