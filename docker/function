@@ -17,6 +17,7 @@ services:
     privileged: true
     container_name: arm-img-builder
     tty: true
+    restart: always
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
       - /dev:/dev
@@ -118,6 +119,7 @@ services:
     privileged: true
     container_name: arm-img-builder
     tty: true
+    restart: always
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
       - /dev:/dev
@@ -217,6 +219,7 @@ services:
     privileged: true
     container_name: arm-img-builder
     tty: true
+    restart: always
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
       - /dev:/dev

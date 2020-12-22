@@ -5,6 +5,8 @@ NC=./docker/native
 NATIVE=./docker/native
 PRG=./docker/purge
 PURGE=./docker/purge
+PRGA=./docker/purge-all
+PURGEALL=./docker/purge-all
 ETR=./docker/enter
 ENTER=./docker/enter
 PL=./docker/pull
@@ -23,6 +25,7 @@ help:
 	@echo "  make native           Create docker container for native compiling"
 	@echo "  make enter            If exited re-enter container"
 	@echo "  make purge            Purge said container"
+	@echo "  make purge-all        Purge container and prune volumes"
 	@echo "  make cleanup          Remove docker files"
 	@echo
 	@echo "Inside container: "
@@ -47,6 +50,11 @@ purge:
 	# Purging ...
 	@chmod +x ${PRG}
 	@${PURGE}
+	
+purge-all:
+	# Purging ...
+	@chmod +x ${PRGA}
+	@${PURGEALL}
 
 enter:
 	# Entering ...

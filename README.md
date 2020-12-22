@@ -33,6 +33,7 @@ Outside container:
   make native           Create docker container for native compiling
   make enter            If exited re-enter container
   make purge            Purge said container
+  make purge-all        Purge container and prune volumes
   make cleanup          Remove docker files
 
 Inside container: 

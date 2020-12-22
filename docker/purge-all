@@ -1,0 +1,26 @@
+#!/bin/bash
+source docker/function
+
+confirm(){
+echo -e ""
+echo -e "${RED}Warning${FIN}: The following with be executed!"
+echo -e "docker system prune -a"
+echo -e "docker system prune --volumes$."
+echo -e ""
+read -p "Continue (y/n)?" choice
+case "$choice" in 
+  y|Y ) echo && echo -e "${GRN}Confirmed${FIN}!";;
+  n|N ) echo && echo -e "You have chosen... ${YLW}wisely." && exit 0;;
+  * ) echo && echo -e "${RED}Invalid choice${FIN}." && exit 0;;
+esac
+}
+
+confirm
+IMAGENAME="pttrr/arm-img-builder"
+DOCKERID="arm-img-builder"
+echo -e "${RED}Removing ID${FIN}: ${DOCKERID}"
+docker stop ${DOCKERID} > /dev/null 2>&1
+docker rm ${DOCKERID} > /dev/null 2>&1
+docker rmi ${IMAGENAME} > /dev/null 2>&1
+echo 'y' | docker system prune -a && echo 'y' | docker system prune --volumes
+echo -e "${RED}Done${FIN}".
