@@ -1,8 +1,8 @@
 #!/bin/bash
 source docker/function
 
-dockerid=$(arm-img-builder)
-echo -e "${RED}Removing ID${FIN}: $dockerid"
-docker stop $dockerid > /dev/null 2>&1
-docker rm $dockerid > /dev/null 2>&1
+DOCKERID="arm-img-builder"
+echo -e "${RED}Removing ID${FIN}: ${DOCKERID}"
+docker stop ${DOCKERID} > /dev/null 2>&1
+docker rm ${DOCKERID} > /dev/null 2>&1
 #echo 'y' | docker system prune -a && echo 'y' | docker system prune --volumes
