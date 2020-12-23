@@ -68,3 +68,12 @@ mv rpi-3-debian-buster-5.10.1-v8-2020-12-21.img.xz /images/
 
 This applies to anything created in the container.
 ```
+
+### Disclaimer
+```sh
+Amlogic:
+At the moment u-boot is not supported when native compiling. In the future I will be investigating
+as to why this is, but just know for the time being this does not work. 
+
+‘make cross’ appears to work as it should.
+```
