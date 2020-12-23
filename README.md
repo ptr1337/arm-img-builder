@@ -68,11 +68,3 @@ mv rpi-3-debian-buster-5.10.1-v8-2020-12-21.img.xz /images/
 
 This applies to anything created in the container.
 ```
-
-### Disclaimer
-```sh
-Amlogic:
-At the moment u-boot is not supported when native compiling using this branch.
-Please use the build branch until this gets resolved.
-```
-`git clone -b build https://github.com/pyavitz/arm-img-builder.git`
