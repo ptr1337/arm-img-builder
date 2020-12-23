@@ -72,8 +72,7 @@ This applies to anything created in the container.
 ### Disclaimer
 ```sh
 Amlogic:
-At the moment u-boot is not supported when native compiling. In the future I will be investigating
-as to why this is, but just know for the time being this does not work. 
-
-‘make cross’ appears to work as it should.
+At the moment u-boot is not supported when native compiling using this branch.
+Please use the build branch until this gets resolved.
 ```
+`git clone -b build https://github.com/pyavitz/arm-img-builder.git`
