@@ -26,80 +26,79 @@ services:
 EOF
 
 tee Dockerfile <<EOF
-FROM ubuntu:20.04
+FROM    ubuntu:20.04
 
-RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive  apt-get install -y --no-install-recommends \
-	ca-certificates \
-	apt-transport-https \
-	binfmt-support \
-	qemu \
-	qemu-user-static \
-	qemu-system-x86 \
-	dosfstools \
-	rsync \
-	wget \
-	lsof \
-	build-essential \
-	bison \
-	xz-utils \
-	dirmngr \
-	parted \
-	systemd \
-	systemd-sysv \
-	debootstrap \
-	kmod \
-	dbus \
-	udev \
-	procps \
-	nano \
-	unzip \
-	git \
-	bc \
-	curl \
-	dialog \
-	patch \
-	zip \
-	rsync \
-	cpio \
-	flex \
-	libssl-dev \
-	libncurses5-dev \
-	fakeroot \
-	swig \
-	aria2 \
-	pv \
-	toilet \
-	figlet \
-	crossbuild-essential-arm64 \
-	crossbuild-essential-armel \
-	gcc-arm-none-eabi \
-	gcc-aarch64-linux-gnu \
-	distro-info-data \
-	lsb-release \
-	python \
-	python-dev \
-	python3-distutils \
-	python3-dev \
-	lz4 \
-	lzop \
-	libfdt-dev \
-	device-tree-compiler \
-	u-boot-tools \
-	&& rm -rf /var/lib/apt/lists/*
-
+ARG     DEBIAN_FRONTEND=noninteractive
+RUN     apt-get update \
+        && apt-get install -y --no-install-recommends \
+        build-essential \
+        crossbuild-essential-arm64 \
+        crossbuild-essential-armel \
+        gcc-arm-none-eabi \
+        gcc-aarch64-linux-gnu \
+        cmake \
+        git \
+        ca-certificates \
+        apt-transport-https \
+        curl \
+        distro-info-data \
+        lsb-release \
+        patch \
+        wget \
+        binfmt-support \
+        dialog \
+        dbus \
+        qemu \
+        qemu-system-x86 \
+        qemu-user-static \
+        zip \
+        unzip \
+        procps \
+        udev \
+        fakeroot \
+        parted \
+        debootstrap \
+        libncurses5-dev \
+        flex \
+        nano \
+        kmod \
+        libssl-dev \
+        rsync \
+        cpio \
+        aria2 \
+        pv \
+        bc \
+        bison \
+        swig \
+        dosfstools \
+        toilet \
+        figlet \
+        xz-utils \
+        lz4 \
+        lsof \
+        device-tree-compiler \
+        libfdt-dev \
+        python3-distutils \
+        python3-dev \
+        lzop \
+        python \
+        python-dev \
+        dirmngr \
+        u-boot-tools \
+        && rm -rf /var/lib/apt/lists/*
+ 
 WORKDIR /build
-
-RUN git clone https://github.com/pyavitz/rpi-img-builder \
-    && git clone https://github.com/pyavitz/debian-image-builder \
-    && wget -cq --show-progress https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/Makefile \
-    && mkdir -p docker \
-    && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/setup \
-    && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/pull \
-    && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/update \
-    && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/function
-    
-CMD ["/bin/bash"]
+ 
+RUN     git clone https://github.com/pyavitz/rpi-img-builder \
+        && git clone https://github.com/pyavitz/debian-image-builder \
+        && wget -cq --show-progress https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/Makefile \
+        && mkdir -p docker \
+        && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/setup \
+        && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/pull \
+        && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/update \
+        && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/function
+        
+CMD     ["/bin/bash"]
 
 EOF
 }
@@ -127,77 +126,76 @@ services:
 EOF
 
 tee Dockerfile <<EOF
-FROM ubuntu:20.04
+FROM   ubuntu:20.04
+ARG    DEBIAN_FRONTEND=noninteractive  
 
-RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive  apt-get install -y --no-install-recommends \
-	ca-certificates \
-	apt-transport-https \
-	binfmt-support \
-	qemu \
-	dosfstools \
-	rsync \
-	wget \
-	lsof \
-	build-essential \
-	bison \
-	xz-utils \
-	parted \
-	systemd \
-	systemd-sysv \
-	debootstrap \
-	kmod \
-	dbus \
-	udev \
-	procps \
-	nano \
-	zip \
-	unzip \
-	git \
-	bc \
-	curl \
-	dialog \
-	patch \
-	rsync \
-	cpio \
-	flex \
-	libssl-dev \
-	libncurses5-dev \
-	fakeroot \
-	swig \
-	aria2 \
-	pv \
-	toilet \
-	figlet \
-	distro-info-data \
-	lsb-release \
-	python \
-	python-dev \
-	python3-distutils \
-	python3-dev \
-	lz4 \
-	lzop \
-	libfdt-dev \
-	device-tree-compiler \
+RUN     apt-get update \
+        &&  apt-get install -y --no-install-recommends \
+        ca-certificates \
+        apt-transport-https \
+        binfmt-support \
+        qemu \
+        dosfstools \
+        rsync \
+        wget \
+        lsof \
+        build-essential \
+        bison \
+        xz-utils \
+        parted \
+        debootstrap \
+        kmod \
+        dbus \
+        udev \
+        procps \
+        nano \
+        unzip \
+        zip \
+        git \
+        bc \
+        curl \
+        dialog \
+        patch \
+        rsync \
+        cpio \
+        flex \
+        libssl-dev \
+        libncurses5-dev \
+        fakeroot \
+        swig \
+        aria2 \
+        pv \
+        toilet \
+        figlet \
+        distro-info-data \
+        lsb-release \
+        python \
+        python-dev \
+        python3-distutils \
+        python3-dev \
+        lz4 \
+        lzop \
+        libfdt-dev \
+        device-tree-compiler \
+        binutils-arm-none-eabi \
+        gcc-arm-none-eabi \
+        libnewlib-arm-none-eabi \
+        libnewlib-dev \
+        libstdc++-arm-none-eabi-newlib \ 
+        qemu-user-static \
 	u-boot-tools \
-	binutils-arm-none-eabi \
-	gcc-arm-none-eabi \
-	libnewlib-arm-none-eabi \
-	libnewlib-dev \
-	libstdc++-arm-none-eabi-newlib \ 
-	qemu-user-static \
 	&& rm -rf /var/lib/apt/lists/*
 
 WORKDIR /build
 
-RUN git clone https://github.com/pyavitz/rpi-img-builder \
-    && git clone https://github.com/pyavitz/debian-image-builder \
-    && wget -cq --show-progress https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/Makefile \
-    && mkdir -p docker \
-    && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/setup \
-    && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/pull \
-    && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/update \
-    && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/function
+RUN     git clone https://github.com/pyavitz/rpi-img-builder \
+        && git clone https://github.com/pyavitz/debian-image-builder \
+        && wget -cq --show-progress https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/Makefile \
+        && mkdir -p docker \
+        && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/setup \
+        && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/pull \
+        && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/update \
+        && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/function
     
 CMD ["/bin/bash"]
 
