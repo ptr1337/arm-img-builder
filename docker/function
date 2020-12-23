@@ -33,6 +33,7 @@ RUN     apt-get update \
         && apt-get install -y --no-install-recommends \
         systemd \
         systemd-sysv \
+        systemd-container \
         build-essential \
         crossbuild-essential-arm64 \
         crossbuild-essential-armel \
@@ -91,12 +92,21 @@ RUN     apt-get update \
         && apt-get update \
         && apt-get upgrade -y \
         && apt-get clean \
-        && rm -rf /var/lib/apt/lists/*
- 
+        && rm -rf /var/lib/apt/lists/* \
+        && rm -rf /tmp/* /var/tmp/* /var/cache/apt/*.bin \
+        /var/lib/dpkg/*-old /var/cache/debconf/*-old && \
+        rm -f /lib/systemd/system/multi-user.target.wants/* \
+        /etc/systemd/system/*.wants/* \
+        /lib/systemd/system/local-fs.target.wants/* \
+        /lib/systemd/system/sockets.target.wants/*udev* \
+        /lib/systemd/system/sockets.target.wants/*initctl* \
+        /lib/systemd/system/sysinit.target.wants/systemd-tmpfiles-setup* \
+        /lib/systemd/system/systemd-update-utmp*
+
 WORKDIR /build
  
-RUN     git clone https://github.com/pyavitz/rpi-img-builder \
-        && git clone https://github.com/pyavitz/debian-image-builder \
+RUN     git clone https://github.com/pyavitz/rpi-img-builder.git \
+        && git clone https://github.com/pyavitz/debian-image-builder.git \
         && wget -cq --show-progress https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/Makefile \
         && mkdir -p docker \
         && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/setup \
@@ -139,6 +149,7 @@ RUN     apt-get update \
         &&  apt-get install -y --no-install-recommends \
         systemd \
         systemd-sysv \
+        systemd-container \
         ca-certificates \
         apt-transport-https \
         binfmt-support \
@@ -196,12 +207,21 @@ RUN     apt-get update \
         && apt-get update \
         && apt-get upgrade -y \
         && apt-get clean \
-	&& rm -rf /var/lib/apt/lists/*
+        && rm -rf /var/lib/apt/lists/* \
+        && rm -rf /tmp/* /var/tmp/* /var/cache/apt/*.bin \
+        /var/lib/dpkg/*-old /var/cache/debconf/*-old && \
+        rm -f /lib/systemd/system/multi-user.target.wants/* \
+        /etc/systemd/system/*.wants/* \
+        /lib/systemd/system/local-fs.target.wants/* \
+        /lib/systemd/system/sockets.target.wants/*udev* \
+        /lib/systemd/system/sockets.target.wants/*initctl* \
+        /lib/systemd/system/sysinit.target.wants/systemd-tmpfiles-setup* \
+        /lib/systemd/system/systemd-update-utmp*
 
 WORKDIR /build
 
-RUN     git clone https://github.com/pyavitz/rpi-img-builder \
-        && git clone https://github.com/pyavitz/debian-image-builder \
+RUN     git clone https://github.com/pyavitz/rpi-img-builder.git \
+        && git clone https://github.com/pyavitz/debian-image-builder.git \
         && wget -cq --show-progress https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/Makefile \
         && mkdir -p docker \
         && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/setup \
