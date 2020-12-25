@@ -15,7 +15,7 @@ read the [README](https://github.com/ptTrR/arm-image-builder-docker/blob/main/RE
 ```ssh
 All docker files are created on the fly depending on your choices 'make cross' or 'make native'.
 At the end of execution you should then find yourself inside the container, at which point you
-will need to run 'make setup'.
+will need to run 'make pull'.
 
 From that point on, each builder "rpi-img-builder / debian-image-builder" function as they would
 outside the container, minus the need for installing dependencies.
