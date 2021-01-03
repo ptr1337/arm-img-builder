@@ -66,11 +66,6 @@ pull:
 	@chmod +x ${PL}
 	@${PULL}
 
-setup:
-	# Creating docker Makefiles ...
-	@chmod +x ${SUP}
-	@${SETUP}
-
 update:
 	# Updating Makefile and scripts ...
 	@chmod +x ${UP}
