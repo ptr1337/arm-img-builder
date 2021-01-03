@@ -32,7 +32,6 @@ help:
 	@echo
 	@echo "Inside container: "
 	@echo
-	@echo "  make setup            Create docker Makefiles"
 	@echo "  make pull             Update builders"
 	@echo "  make update           Update makefile and scripts"
 	@echo
