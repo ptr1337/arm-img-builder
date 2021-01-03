@@ -1,8 +1,0 @@
-#!/bin/bash
-source docker/function
-
-echo -e "${GRN}Running setup${FIN} ..."
-cd rpi-img-builder && make dmakefile > /dev/null 2>&1
-cd ../debian-image-builder && make dmakefile > /dev/null 2>&1
-cd ..
-echo -e "${GRN}Done${FIN}."

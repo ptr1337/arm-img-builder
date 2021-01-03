@@ -38,7 +38,6 @@ Outside container:
 
 Inside container: 
 
-  make setup            Create docker Makefiles
   make pull             Update builders
   make update           Update makefile and scripts
 

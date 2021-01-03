@@ -11,8 +11,6 @@ ETR=./docker/enter
 ENTER=./docker/enter
 PL=./docker/pull
 PULL=./docker/pull
-SUP=./docker/setup
-SETUP=./docker/setup
 UP=./docker/update
 UPDATE=./docker/update
 CLEAN=$(shell rm -f Dockerfile* *.yml)
@@ -32,7 +30,6 @@ help:
 	@echo
 	@echo "Inside container: "
 	@echo
-	@echo "  make setup            Create docker Makefiles"
 	@echo "  make pull             Update builders"
 	@echo "  make update           Update makefile and scripts"
 	@echo
@@ -68,11 +65,6 @@ pull:
 	# Updating ...
 	@chmod +x ${PL}
 	@${PULL}
-
-setup:
-	# Creating docker Makefiles ...
-	@chmod +x ${SUP}
-	@${SETUP}
 
 update:
 	# Updating Makefile and scripts ...
