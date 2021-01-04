@@ -1,6 +1,6 @@
 # Addon for the Arm Image Builder Docker
 
-***All docker work done by:*** https://github.com/ptTrR/arm-image-builder-docker
+**All docker work done by:** https://github.com/ptTrR/arm-image-builder-docker
 
 ### Builders:
 * https://github.com/pyavitz/rpi-img-builder
@@ -20,7 +20,7 @@ will need to run 'make pull'.
 From that point on, each builder "rpi-img-builder / debian-image-builder" function as they would
 outside the container, minus the need for installing dependencies.
 
-For each builder simply following the directions in the README.md or run ‘make help’.
+For each builder simply follow the directions in the README.md or run ‘make help’.
 ```
 
 ### Makefile
