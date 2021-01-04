@@ -12,8 +12,8 @@ version: '3.6'
 services:
 
   arm-img-builder:
-  #  build: .  #uncomment for building
-    image: pttrr/arm-img-builder:latest
+    build: .  #uncomment for building
+#    image: pttrr/arm-img-builder:latest
     privileged: true
     container_name: arm-img-builder
     tty: true
@@ -89,6 +89,7 @@ RUN     apt-get update \
         python-dev \
         dirmngr \
         u-boot-tools \
+        sudo \
         && apt-get update \
         && apt-get upgrade -y \
         && apt-get clean \
@@ -109,7 +110,6 @@ RUN     git clone https://github.com/pyavitz/rpi-img-builder.git \
         && git clone https://github.com/pyavitz/debian-image-builder.git \
         && wget -cq --show-progress https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/Makefile \
         && mkdir -p docker \
-        && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/setup \
         && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/pull \
         && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/update \
         && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/function
@@ -128,8 +128,8 @@ version: '3.6'
 services:
 
   arm-img-builder:
-  #  build: .  #uncomment for building
-    image: pttrr/arm-img-builder:native
+    build: .  #uncomment for building
+#    image: pttrr/arm-img-builder:native
     privileged: true
     container_name: arm-img-builder
     tty: true
@@ -204,6 +204,7 @@ RUN     apt-get update \
         libstdc++-arm-none-eabi-newlib \ 
         qemu-user-static \
 	u-boot-tools \
+	sudo \
         && apt-get update \
         && apt-get upgrade -y \
         && apt-get clean \
@@ -224,7 +225,6 @@ RUN     git clone https://github.com/pyavitz/rpi-img-builder.git \
         && git clone https://github.com/pyavitz/debian-image-builder.git \
         && wget -cq --show-progress https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/Makefile \
         && mkdir -p docker \
-        && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/setup \
         && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/pull \
         && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/update \
         && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/function
