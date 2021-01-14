@@ -6,5 +6,7 @@ cd /build/rpi-img-builder
 git pull
 cd ../debian-image-builder
 git pull
+cd ../armhf-rpi-img-builder
+git pull
 cd ..
 echo -e "${GRN}Done${FIN}."
