@@ -108,11 +108,11 @@ WORKDIR /build
  
 RUN     git clone https://github.com/pyavitz/rpi-img-builder.git \
         && git clone https://github.com/pyavitz/debian-image-builder.git \
-        && wget -cq --show-progress https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/Makefile \
+        && wget -cq --show-progress https://raw.githubusercontent.com/pyavitz/arm-img-builder/build/Makefile \
         && mkdir -p docker \
-        && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/pull \
-        && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/update \
-        && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/function
+        && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/build/docker/pull \
+        && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/build/docker/update \
+        && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/build/docker/function
         
 CMD     ["/bin/bash"]
 
@@ -223,11 +223,11 @@ WORKDIR /build
 
 RUN     git clone https://github.com/pyavitz/rpi-img-builder.git \
         && git clone https://github.com/pyavitz/debian-image-builder.git \
-        && wget -cq --show-progress https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/Makefile \
+        && wget -cq --show-progress https://raw.githubusercontent.com/pyavitz/arm-img-builder/build/Makefile \
         && mkdir -p docker \
-        && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/pull \
-        && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/update \
-        && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/function
+        && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/build/docker/pull \
+        && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/build/docker/update \
+        && wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/build/docker/function
     
 CMD ["/bin/bash"]
 
