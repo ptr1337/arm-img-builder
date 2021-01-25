@@ -3,8 +3,8 @@ source docker/function
 
 echo -e "${GRN}Running git pull${FIN} ..."
 cd /build/rpi-img-builder
-git pull
+git config pull.rebase false && git pull
 cd ../debian-image-builder
-git pull
+git config pull.rebase false && git pull
 cd ..
 echo -e "${GRN}Done${FIN}."
