@@ -63,7 +63,7 @@ enter:
 	@${ENTER}
 
 update:
-	# Updating Makefile and scripts ...
+	# Updating container ...
 	@chmod +x ${UP}
 	@${UPDATE}
 
