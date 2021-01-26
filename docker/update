@@ -9,12 +9,19 @@ rm -f docker/*
 update(){
 wget -cq --show-progress https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/Makefile
 mkdir -p docker
-wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/pull
 wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/update
 wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/function
 chmod +x docker/{pull,update}
 }
 
+echo -e "${GRN}Running git pull${FIN} ..."
+cd /build/rpi-img-builder
+git config pull.rebase false && git pull
+cd ../debian-image-builder
+git config pull.rebase false && git pull
+cd ..
+echo -e "${GRN}Done${FIN}."
+echo
 echo -e "${GRN}Updating files${FIN} ..."
 remove
 update
