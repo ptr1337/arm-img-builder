@@ -15,7 +15,7 @@ read the [README](https://github.com/ptTrR/arm-image-builder-docker/blob/main/RE
 ```ssh
 All docker files are created on the fly depending on your choices 'make cross' or 'make native'.
 At the end of execution you should then find yourself inside the container, at which point you
-will need to run 'make pull'.
+will need to run 'make update'.
 
 From that point on, each builder "rpi-img-builder / debian-image-builder" function as they would
 outside the container, minus the need for installing dependencies.
@@ -31,15 +31,16 @@ Outside container:
 
   make cross            Create docker container for cross compiling
   make native           Create docker container for native compiling
+  make cleanup          Remove docker files
   make enter            If exited re-enter container
+  make start            Start container
+  make stop             Stop container
   make purge            Purge said container
   make purge-all        Purge container and prune volumes
-  make cleanup          Remove docker files
 
 Inside container: 
 
-  make pull             Update builders
-  make update           Update makefile and scripts
+  make update           Update builders, makefile and scripts
 
 For details consult the README.md
 ```
@@ -63,7 +64,7 @@ sudo systemctl restart docker
 ### Moving files
 ```sh
 Example:
-mv rpi-3-debian-buster-5.10.1-v8-2020-12-21.img.xz /images/
+mv -f *.img.xz /images/
 
 This applies to anything created in the container.
 ```
