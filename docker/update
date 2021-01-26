@@ -11,7 +11,7 @@ wget -cq --show-progress https://raw.githubusercontent.com/pyavitz/arm-img-build
 mkdir -p docker
 wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/update
 wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/function
-chmod +x docker/{pull,update}
+chmod +x docker/update
 }
 
 echo -e "${GRN}Running git pull${FIN} ..."
