@@ -26,7 +26,7 @@ services:
 EOF
 
 tee Dockerfile <<EOF
-FROM    ubuntu:20.04
+FROM    debian:buster-slim
 
 ARG     DEBIAN_FRONTEND=noninteractive
 RUN     apt-get update \
@@ -142,7 +142,7 @@ services:
 EOF
 
 tee Dockerfile <<EOF
-FROM   ubuntu:20.04
+FROM   debian:buster-slim
 ARG    DEBIAN_FRONTEND=noninteractive  
 
 RUN     apt-get update \
@@ -231,47 +231,5 @@ RUN     git clone https://github.com/pyavitz/rpi-img-builder.git \
     
 CMD ["/bin/bash"]
 
-EOF
-}
-
-docker_cbuild(){
-rm -f docker-compose.yml
-tee docker-compose.yml <<EOF
-version: '3.6'
-services:
-
-  arm-img-builder:
-    build: .  #uncomment for building
-    image: pttrr/arm-img-builder:latest
-    privileged: true
-    container_name: arm-img-builder
-    tty: true
-    restart: always
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-      - /dev:/dev
-      - ./:/images
-    
-EOF
-}
-
-docker_nbuild(){
-rm -f docker-compose.yml
-tee docker-compose.yml <<EOF
-version: '3.6'
-services:
-
-  arm-img-builder:
-    build: .  #uncomment for building
-    image: pttrr/arm-img-builder:native
-    privileged: true
-    container_name: arm-img-builder
-    tty: true
-    restart: always
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-      - /dev:/dev
-      - ./:/images
-    
 EOF
 }

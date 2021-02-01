@@ -31,10 +31,12 @@ Outside container:
 
   make cross            Create docker container for cross compiling
   make native           Create docker container for native compiling
+  make cleanup          Remove docker files
   make enter            If exited re-enter container
+  make start            Start container
+  make stop             Stop container
   make purge            Purge said container
   make purge-all        Purge container and prune volumes
-  make cleanup          Remove docker files
 
 Inside container: 
 

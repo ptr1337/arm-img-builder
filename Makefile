@@ -13,6 +13,8 @@ PL=./docker/pull
 PULL=./docker/pull
 UP=./docker/update
 UPDATE=./docker/update
+START=$(shell docker container start arm-img-builder > /dev/null 2>&1)
+STOP=$(shell docker container stop arm-img-builder > /dev/null 2>&1)
 CLEAN=$(shell rm -f Dockerfile* *.yml)
 
 help:
@@ -23,10 +25,12 @@ help:
 	@echo
 	@echo "  make cross            Create docker container for cross compiling"
 	@echo "  make native           Create docker container for native compiling"
+	@echo "  make cleanup          Remove docker files"
 	@echo "  make enter            If exited re-enter container"
+	@echo "  make start            Start container"
+	@echo "  make stop             Stop container"
 	@echo "  make purge            Purge said container"
 	@echo "  make purge-all        Purge container and prune volumes"
-	@echo "  make cleanup          Remove docker files"
 	@echo
 	@echo "Inside container: "
 	@echo
@@ -74,3 +78,11 @@ update:
 cleanup:
 	# Removing docker files ...
 	@${CLEAN}
+
+start:
+	# Container started ...
+	@${START}
+
+stop:
+	# Container stopped ...
+	@${STOP}
