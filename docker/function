@@ -36,6 +36,7 @@ RUN     apt-get update \
         systemd-container \
         build-essential \
         crossbuild-essential-arm64 \
+        crossbuild-essential-armhf \
         crossbuild-essential-armel \
         gcc-arm-none-eabi \
         gcc-aarch64-linux-gnu \
