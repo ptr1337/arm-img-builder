@@ -27,7 +27,7 @@ services:
 EOF
 
 tee Dockerfile <<EOF
-FROM debian:bullseye
+FROM debian:buster-slim
 
 ENV LC_ALL C
 ENV DEBIAN_FRONTEND noninteractive
@@ -139,7 +139,7 @@ services:
 EOF
 
 tee Dockerfile <<EOF
-FROM debian:bullseye
+FROM debian:buster-slim
 
 ENV LC_ALL C
 ENV DEBIAN_FRONTEND noninteractive
