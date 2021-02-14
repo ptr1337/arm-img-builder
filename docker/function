@@ -91,6 +91,7 @@ RUN     apt-get update \
         dirmngr \
         u-boot-tools \
         sudo \
+	btrfs-progs \
         && apt-get update \
         && apt-get upgrade -y \
         && apt-get clean \
@@ -206,6 +207,7 @@ RUN     apt-get update \
         qemu-user-static \
 	u-boot-tools \
 	sudo \
+	btrfs-progs \
         && apt-get update \
         && apt-get upgrade -y \
         && apt-get clean \
