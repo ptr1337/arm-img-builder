@@ -64,7 +64,7 @@ sudo systemctl restart docker
 ### Moving files
 ```sh
 Example:
-mv -f *.img.xz /images/
+mv -f *img* /images/
 
 This applies to anything created in the container.
 ```
