@@ -12,33 +12,39 @@ version: '3.6'
 services:
 
   arm-img-builder:
-#    build: .  #uncomment for building 
-    image: pttrr/arm-img-builder:latest
+#    build: .  #uncomment for building
+    image: pttrr/arm-img-builder:latest # for crosscompiling
+#    image: pttrr/arm-img-builder:native # if building on a arm64
     privileged: true
     container_name: arm-img-builder
     stdin_open: true
     tty: true
-#    restart: always
+    privileged: true
+    tmpfs:
+      - /tmp
+      - /run
+      - /run/lock
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
       - /dev:/dev
       - ./:/images
-    
+
 EOF
 
 tee Dockerfile <<EOF
-FROM debian:buster-slim
+FROM ubuntu:focal
 
 ENV LC_ALL C
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get -y update \
- && apt-get -y install --no-install-recommends \
+   && apt-get -y install --no-install-recommends \
       apt-transport-https \
       ca-certificates \
       build-essential \
       qemu-user-static \
       binfmt-support \
+      systemd-container \
       coreutils \
       autoconf \
       automake \
@@ -98,8 +104,8 @@ RUN apt-get -y update \
       python \
       python-dev \
       btrfs-progs \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt/*.bin \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt/*.bin \
     /var/lib/dpkg/*-old /var/cache/debconf/*-old
 
 WORKDIR /build
@@ -125,17 +131,22 @@ version: '3.6'
 services:
 
   arm-img-builder:
-#    build: .  #uncomment for building 
-    image: pttrr/arm-img-builder:native
+#    build: .  #uncomment for building
+    image: pttrr/arm-img-builder:native # if building on a arm64 with docker
     privileged: true
     container_name: arm-img-builder
     stdin_open: true
     tty: true
-#    restart: always
+    privileged: true
+    tmpfs:
+      - /tmp
+      - /run
+      - /run/lock
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
       - /dev:/dev
       - ./:/images
+
 EOF
 
 tee Dockerfile <<EOF
