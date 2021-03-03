@@ -92,6 +92,8 @@ RUN     apt-get update \
         u-boot-tools \
         sudo \
 	btrfs-progs \
+	e2fsprogs \
+	kpartx \
         && apt-get update \
         && apt-get upgrade -y \
         && apt-get clean \
@@ -208,6 +210,8 @@ RUN     apt-get update \
 	u-boot-tools \
 	sudo \
 	btrfs-progs \
+	e2fsprogs \
+	kpartx \
         && apt-get update \
         && apt-get upgrade -y \
         && apt-get clean \
