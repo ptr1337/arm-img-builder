@@ -2,6 +2,7 @@
 RED="\e[0;31m"
 GRN="\e[0;32m"
 FIN="\e[0m"
+DISTRO="debian:buster-slim"
 
 # CROSS
 docker_cross(){
@@ -26,7 +27,7 @@ services:
 EOF
 
 tee Dockerfile <<EOF
-FROM    debian:buster-slim
+FROM    ${DISTRO}
 
 ARG     DEBIAN_FRONTEND=noninteractive
 RUN     apt-get update \
@@ -146,7 +147,7 @@ services:
 EOF
 
 tee Dockerfile <<EOF
-FROM   debian:buster-slim
+FROM   ${DISTRO}
 ARG    DEBIAN_FRONTEND=noninteractive  
 
 RUN     apt-get update \
