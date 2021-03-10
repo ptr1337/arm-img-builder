@@ -2,7 +2,7 @@
 RED="\e[0;31m"
 GRN="\e[0;32m"
 FIN="\e[0m"
-DISTRO="debian:buster-slim"
+DISTRO="ubuntu:focal"
 
 # CROSS
 docker_cross(){
@@ -95,6 +95,18 @@ RUN     apt-get update \
 	btrfs-progs \
 	e2fsprogs \
 	kpartx \
+	gcc-8 \
+	gcc-9 \
+	gcc-10 \
+	gcc-8-arm-linux-gnueabi \
+	gcc-9-arm-linux-gnueabi \
+	gcc-10-arm-linux-gnueabi \
+	gcc-8-arm-linux-gnueabihf \
+	gcc-9-arm-linux-gnueabihf \
+	gcc-10-arm-linux-gnueabihf \
+	gcc-8-aarch64-linux-gnu \
+	gcc-9-aarch64-linux-gnu \
+	gcc-10-aarch64-linux-gnu \
         && apt-get update \
         && apt-get upgrade -y \
         && apt-get clean \
@@ -213,6 +225,9 @@ RUN     apt-get update \
 	btrfs-progs \
 	e2fsprogs \
 	kpartx \
+	gcc-8 \
+	gcc-9 \
+	gcc-10 \
         && apt-get update \
         && apt-get upgrade -y \
         && apt-get clean \
