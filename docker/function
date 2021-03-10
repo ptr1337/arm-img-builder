@@ -35,6 +35,8 @@ RUN     apt-get update \
         systemd \
         systemd-sysv \
         systemd-container \
+	debian-keyring \
+	debian-archive-keyring \
         build-essential \
         crossbuild-essential-arm64 \
         crossbuild-essential-armhf \
@@ -167,6 +169,8 @@ RUN     apt-get update \
         systemd \
         systemd-sysv \
         systemd-container \
+	debian-keyring \
+	debian-archive-keyring \
         ca-certificates \
         apt-transport-https \
         binfmt-support \
