@@ -19,6 +19,8 @@ cd /build/rpi-img-builder
 git config pull.rebase false && git pull
 cd ../debian-image-builder
 git config pull.rebase false && git pull
+cd ../armhf
+git config pull.rebase false && git pull
 cd ..
 echo -e "${GRN}Done${FIN}."
 echo
