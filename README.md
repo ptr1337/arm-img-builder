@@ -11,6 +11,12 @@ read the [README](https://github.com/ptTrR/arm-image-builder-docker/blob/main/RE
 
 ---
 
+### Host
+* Dependencies
+```sh
+docker docker-compose qemu qemu-user-static binfmt-support
+```
+
 ### Basics
 ```ssh
 All docker files are created on the fly depending on your choices 'make cross' or 'make native'.
