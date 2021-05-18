@@ -113,7 +113,7 @@ RUN     apt-get update \
 	gcc-9-aarch64-linux-gnu \
 	gcc-10-aarch64-linux-gnu \
 	crossbuild-essential-arm64 \
-	crossbuild-essential-armel \
+	crossbuild-essential-armhf \
 	crossbuild-essential-armel \
         && apt-get update \
         && apt-get upgrade -y \
