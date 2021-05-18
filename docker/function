@@ -2,7 +2,7 @@
 RED="\e[0;31m"
 GRN="\e[0;32m"
 FIN="\e[0m"
-DISTRO="ubuntu:20.04"
+DISTRO="ubuntu:focal"
 
 # CROSS
 docker_cross(){
@@ -28,6 +28,7 @@ EOF
 
 tee Dockerfile <<EOF
 FROM    ${DISTRO}
+ARG    DEBIAN_FRONTEND=noninteractive  
 
 RUN     apt-get update \
         && apt-get install -y \
