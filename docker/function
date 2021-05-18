@@ -37,6 +37,7 @@ RUN     apt-get update \
 	debian-keyring \
 	debian-archive-keyring \
 	perl \
+	libelf-dev \
         ca-certificates \
         apt-transport-https \
         binfmt-support \
@@ -101,6 +102,15 @@ RUN     apt-get update \
 	gcc-8 \
 	gcc-9 \
 	gcc-10 \
+	gcc-8-arm-linux-gnueabi \
+	gcc-9-arm-linux-gnueabi \
+	gcc-10-arm-linux-gnueabi \
+	gcc-8-arm-linux-gnueabihf \
+	gcc-9-arm-linux-gnueabihf \
+	gcc-10-arm-linux-gnueabihf \
+	gcc-8-aarch64-linux-gnu \
+	gcc-9-aarch64-linux-gnu \
+	gcc-10-aarch64-linux-gnu \
 	crossbuild-essential-arm64 \
 	crossbuild-essential-armel \
 	crossbuild-essential-armel \
@@ -167,6 +177,7 @@ RUN     apt-get update \
 	debian-keyring \
 	debian-archive-keyring \
 	perl \
+	libelf-dev \
         ca-certificates \
         apt-transport-https \
         binfmt-support \
