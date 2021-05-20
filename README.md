@@ -15,6 +15,10 @@ read the [README](https://github.com/ptTrR/arm-image-builder-docker/blob/main/RE
 ```sh
 docker docker-compose qemu qemu-user-static binfmt-support
 ```
+### Correct qemu errors
+```sh
+docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+```
 
 ### Basics
 ```ssh
