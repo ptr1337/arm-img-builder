@@ -11,7 +11,12 @@ wget -cq --show-progress https://raw.githubusercontent.com/pyavitz/arm-img-build
 mkdir -p docker
 wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/build/docker/update
 wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/build/docker/function
-chmod +x docker/update
+if ls docker/update > /dev/null 2>&1
+	then chmod +x docker/update;
+fi
+if ls docker/pull > /dev/null 2>&1
+	then rm -f docker/pull;
+fi
 }
 
 pull(){
@@ -36,5 +41,6 @@ echo -e "${GRN}Done${FIN}."
 pull
 echo -e "${GRN}Updating files${FIN} ..."
 remove
+echo
 update
 echo -e "${GRN}Done${FIN}."
