@@ -9,12 +9,31 @@ rm -f docker/*
 update(){
 wget -cq --show-progress https://raw.githubusercontent.com/pyavitz/arm-img-builder/build/Makefile
 mkdir -p docker
-wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/build/docker/pull
 wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/build/docker/update
 wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/build/docker/function
-chmod +x docker/{pull,update}
+chmod +x docker/update
 }
 
+pull(){
+echo
+echo -e "${GRN}Running git pull${FIN} ..."
+if ls /build/rpi-img-builder > /dev/null 2>&1
+	then cd /build/rpi-img-builder && git config pull.rebase false && git pull
+	else cd /build && git clone https://github.com/pyavitz/rpi-img-builder.git
+fi
+if ls /build/debian-image-builder > /dev/null 2>&1
+	then cd /build/debian-image-builder && git config pull.rebase false && git pull
+	else cd /build && git clone https://github.com/pyavitz/debian-image-builder.git
+fi
+if ls /build/armhf > /dev/null 2>&1
+	then cd /build/armhf && git config pull.rebase false && git pull
+	else cd /build && git clone -b armhf https://github.com/pyavitz/rpi-img-builder.git armhf
+fi
+cd /build
+echo -e "${GRN}Done${FIN}."
+}
+
+pull
 echo -e "${GRN}Updating files${FIN} ..."
 remove
 update

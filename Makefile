@@ -7,12 +7,10 @@ PRG=./docker/purge
 PURGE=./docker/purge
 PRGA=./docker/purge-all
 PURGEALL=./docker/purge-all
-ETR=./docker/enter
-ENTER=./docker/enter
-PL=./docker/pull
-PULL=./docker/pull
 UP=./docker/update
 UPDATE=./docker/update
+ETR=./docker/enter
+ENTER=./docker/enter
 START=$(shell docker container start arm-img-builder > /dev/null 2>&1)
 STOP=$(shell docker container stop arm-img-builder > /dev/null 2>&1)
 CLEAN=$(shell rm -f Dockerfile* *.yml)
@@ -34,8 +32,7 @@ help:
 	@echo
 	@echo "Inside container: "
 	@echo
-	@echo "  make pull             Update builders"
-	@echo "  make update           Update makefile and scripts"
+	@echo "  make update           Update builders, makefile and scripts"
 	@echo
 	@echo "For details consult the README.md"
 	@echo
@@ -65,13 +62,8 @@ enter:
 	@chmod +x ${ETR}
 	@${ENTER}
 
-pull:
-	# Updating ...
-	@chmod +x ${PL}
-	@${PULL}
-
 update:
-	# Updating Makefile and scripts ...
+	# Updating container ...
 	@chmod +x ${UP}
 	@${UPDATE}
 
