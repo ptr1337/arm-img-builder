@@ -39,8 +39,8 @@ echo -e "${GRN}Done${FIN}."
 }
 
 pull
+echo
 echo -e "${GRN}Updating files${FIN} ..."
 remove
-echo
 update
 echo -e "${GRN}Done${FIN}."
