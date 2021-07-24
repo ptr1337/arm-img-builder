@@ -123,6 +123,7 @@ RUN   apt-get update \
       python-dev \
       btrfs-progs \
       e2fsprogs \
+      xfsprogs \
       kpartx \
       u-boot-tools \
   &&  rm -rf /var/lib/apt/lists/*
@@ -269,6 +270,7 @@ RUN   apt-get update \
       python-dev \
       btrfs-progs \
       e2fsprogs \
+      xfsprogs \
       kpartx \
       u-boot-tools \
   &&  rm -rf /var/lib/apt/lists/*
