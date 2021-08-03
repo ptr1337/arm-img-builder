@@ -64,6 +64,12 @@ RUN   apt-get update \
       libc6-dev-arm64-cross \
       libc6-dev-armhf-cross \
       libc6-dev-armel-cross \
+      clang-12 \ 
+      lld \ 
+      lld-12 \
+      clang \
+      llvm \
+      llvm-runtime \
       gawk \
       cmake \
       git \
@@ -211,6 +217,12 @@ RUN   apt-get update \
       g++-10-arm-linux-gnueabihf \
       libc6-dev-armhf-cross \
       libc6-dev-armel-cross \
+      clang-12 \ 
+      lld \ 
+      lld-12 \
+      clang \
+      llvm \
+      llvm-runtime \
       gawk \
       cmake \
       git \
