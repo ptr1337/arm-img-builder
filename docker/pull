@@ -1,0 +1,19 @@
+#!/bin/bash
+source docker/function
+
+if [[ `sudo dmesg | grep -w x86-64` ]]; then
+	echo -e "${GRN}Starting pull${FIN} ..."
+	docker_x86-64 > /dev/null 2>&1
+	docker-compose pull && docker-compose up -d
+	docker exec -it arm-img-builder bash;
+else
+	if [[ `sudo dmesg | grep -w arm64` ]]; then
+		echo -e "${GRN}Starting pull${FIN} ..."
+		docker_arm64 > /dev/null 2>&1
+		docker-compose pull && docker-compose up -d
+		docker exec -it arm-img-builder bash;
+	else
+		echo "Only x86-64 and arm64 is supported!"
+		exit;
+	fi
+fi

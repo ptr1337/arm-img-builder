@@ -1,30 +1,64 @@
 #!/bin/bash
 source docker/function
 
-remove(){
-rm -f Makefile
-rm -f docker/*
+# FUNCTIONS
+pull(){
+echo
+echo -e "${GRN}Running git pull${FIN} ..."
+if [ -e /build/rpi-img-builder ]; then
+	cd /build/rpi-img-builder
+	git config pull.rebase false
+	git pull;
+else
+	cd /build
+	git clone https://github.com/pyavitz/rpi-img-builder.git;
+fi
+if [ -e /build/debian-image-builder ]; then
+	cd /build/debian-image-builder
+	git config pull.rebase false
+	git pull;
+else
+	cd /build
+	git clone https://github.com/pyavitz/debian-image-builder.git;
+fi
+cd /build
+echo -e "${GRN}Done${FIN}."
 }
 
 update(){
+mv -f Makefile Makefile.orig
+mv -f docker/update docker/update.orig
+mv -f docker/function docker/function.orig
 wget -cq --show-progress https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/Makefile
-mkdir -p docker
+if [ -e docker ]; then
+	:;
+else
+	mkdir -p docker;
+fi
 wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/update
 wget -cq --show-progress -P docker https://raw.githubusercontent.com/pyavitz/arm-img-builder/main/docker/function
-chmod +x docker/update
+if [ -e Makefile ]; then
+	rm -f Makefile.orig
+else
+	mv -f Makefile.orig Makefile;
+fi
+if [ -e docker/update ]; then
+	rm -f docker/update.orig
+	chmod +x docker/update;
+else
+	mv -f docker/update.orig docker/update
+	chmod +x docker/update;
+fi
+if [ -e docker/function ]; then
+	rm -f docker/function.orig;
+else
+	mv -f docker/function.orig docker/function;
+fi
 }
 
-echo -e "${GRN}Running git pull${FIN} ..."
-cd /build/rpi-img-builder
-git config pull.rebase false && git pull
-cd ../debian-image-builder
-git config pull.rebase false && git pull
-cd ../armhf
-git config pull.rebase false && git pull
-cd ..
-echo -e "${GRN}Done${FIN}."
+# RUN
+pull
 echo
 echo -e "${GRN}Updating files${FIN} ..."
-remove
 update
 echo -e "${GRN}Done${FIN}."

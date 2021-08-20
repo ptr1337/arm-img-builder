@@ -1,6 +1,6 @@
 # DOCKER
-CC=./docker/cross
-CROSS=./docker/cross
+PL=./docker/pull
+PULL=./docker/pull
 NC=./docker/native
 NATIVE=./docker/native
 PRG=./docker/purge
@@ -13,7 +13,7 @@ ETR=./docker/enter
 ENTER=./docker/enter
 START=$(shell docker container start arm-img-builder > /dev/null 2>&1)
 STOP=$(shell docker container stop arm-img-builder > /dev/null 2>&1)
-CLEAN=$(shell rm -f Dockerfile* *.yml)
+CLEAN=$(shell rm -f *.yml)
 
 help:
 	@echo
@@ -21,9 +21,8 @@ help:
 	@echo 
 	@echo "Outside container: "
 	@echo
-	@echo "  make cross            Create docker container for cross compiling"
-	@echo "  make native           Create docker container for native compiling"
-	@echo "  make cleanup          Remove docker files"
+	@echo "  make pull             Create docker container"
+	@echo "  make cleanup          Remove docker file"
 	@echo "  make enter            If exited re-enter container"
 	@echo "  make start            Start container"
 	@echo "  make stop             Stop container"
@@ -37,15 +36,10 @@ help:
 	@echo "For details consult the README.md"
 	@echo
 
-cross:
-	# Cross compiling ...
-	@chmod +x ${CC}
-	@${CROSS}
-
-native:
-	# Native compiling ...
-	@chmod +x ${NC}
-	@${NATIVE}
+pull:
+	# Creating container ...
+	@chmod +x ${PL}
+	@${PULL}
 
 purge:
 	# Purging ...
