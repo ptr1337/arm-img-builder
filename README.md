@@ -13,7 +13,7 @@ read the [README](https://github.com/ptTrR/arm-image-builder-docker/blob/main/RE
 
 ### Host Dependencies
 ```sh
-docker docker-compose qemu qemu-user-static binfmt-support
+docker docker-compose qemu qemu-user-static binfmt-support make
 ```
 ### Correct qemu errors
 ```sh
