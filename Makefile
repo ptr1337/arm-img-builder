@@ -1,8 +1,6 @@
 # DOCKER
 PL=./docker/pull
 PULL=./docker/pull
-NC=./docker/native
-NATIVE=./docker/native
 PRG=./docker/purge
 PURGE=./docker/purge
 PRGA=./docker/purge-all
